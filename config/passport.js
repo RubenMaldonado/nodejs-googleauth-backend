@@ -7,8 +7,8 @@ const UserModel = mongoose.model('users')
 module.exports = function(passport) {
   passport.use(
     new GoogleStrategy({
-      clientID:     keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
+      clientID:     process.env.GOOGLE_CLIENTID,
+      clientSecret: process.env.GOOGLE_CLIENTSECRET,
       callbackURL: "/auth/google/callback",
       proxy: true
     }, (accessToken, refreshToken, profile, done) => {

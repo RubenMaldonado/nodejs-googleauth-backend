@@ -4,6 +4,8 @@ const passport = require('passport');
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 
+require('dotenv').config();
+
 // Custom exports
 const keys = require('./config/keys');
 
@@ -17,7 +19,7 @@ require('./models/User');
 require('./config/passport')(passport);
 
 // Mongoose Connect
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
